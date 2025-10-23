@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Mandiri</title>
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Native - Header */
+        .custom-header {
+            background-color: #112D4E;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .custom-header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(44, 62, 80, 0.95);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #3498db !important;
+        }
+        
+        /* CSS Native - Hero Section */
+        .hero-section {
+            background-color: white;
+            color: black;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* CSS Native - Card */
+        .custom-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+        
+        .custom-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        /* CSS Native - Footer */
+        .custom-footer {
+            background-color: #112D4E;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #3498db;
+        }
+        
+        /* Dark Mode */
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+        
+        .dark-mode .hero-section {
+            background-color: black;
+            color: white;
+        }
+
+        .dark-mode .custom-header {
+            background-color: black;
+        }
+        
+        .dark-mode .custom-card {
+            background-color: white;
+            color: black;
+        }
+        
+        .dark-mode .custom-footer {
+            background-color: black;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom Form Styles */
+        .form-control:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            border-color: #3498db;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        /* Section Spacing */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #3498db;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header dengan CSS Native -->
+    <header class="custom-header fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <img src="images-removebg-preview.png" width="50px" alt="Foto tidak ditemukan">
+                <a class="navbar-brand" href="index.html">PlayStation®</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Produk.html">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Kontak.html">Kontak</a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="darkModeToggle" class="btn btn-outline-light ms-2">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="Spider Man Miles Morales.jpg" width="100%" alt="Foto tidak ditemukan">
+    </div>
+    <div class="carousel-item">
+      <img src="Horizon Zero Dawn.jpg" width="100%" alt="Foto tidak ditemukan">
+    </div>
+    <div class="carousel-item">
+      <img src="GHOST OF YOTEI.jpg" width="100%" alt="Foto tidak ditemukan">
+    </div>
+    <div class="carousel-item">
+      <img src="SILENT HILL F.jpg" width="100%" alt="Foto tidak ditemukan">
+    </div>
+    <div class="carousel-item">
+      <img src="Dying Light The Beast2.jpg" width="100%" alt="Foto tidak ditemukan">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+            <a href="#projects" class="btn btn-light btn-lg mt-3 fade-in">Lihat konsol produk</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Evolusi PlayStation</h2>
+            <div class="ratio ratio-16x9">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/EtWYQeht3-A?si=8EQdk06ZLNWXDkfc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <br>
+            <div class="row align-items-center">
+                <div class="col-md-4 mb-4">
+                    <img src="JADUL.png" width="100%" alt="Foto tidak ditemukan">
+                </div>
+                <div class="col-md-8">
+                    <h3>Penjelasan:</h3>
+                    <p>PlayStation adalah merek konsol permainan video yang diproduksi oleh Sony yang pertama kali dirilis pada tahun 1994. Sejak itu, Sony telah merilis banyak generasi konsol, mulai dari yang menggunakan CD seperti PS1 dan PS2, hingga yang lebih canggih dengan penyimpanan hard disk dan fitur online seperti PS3, PS4, dan PS5.</p>
+                    <a href="https://en.wikipedia.org/wiki/PlayStation" class="btn btn-primary mt-3">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Produk Terlaris</h2>
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="custom-card h-100">
+                        <img src="661b401344ddbc3cf46d3741-pre-owned-sony-playstation-2-ps2-game.jpg" width="100%" alt="Foto tidak ditemukan">
+                        <div class="card-body">
+                            <h5><p class="text-center">PS2 Fat</p></h5>
+                            <p class="card-text">Model konsol PlayStation 2 yang dirilis pada tahun 2000 dengan ukuran lebih besar dan tebal, yang memiliki beberapa fitur seperti tray loading cakram, dua slot kartu memori dan controller, dua port USB, dan ruang ekspansi untuk adaptor jaringan dan hard disk.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="https://www.tokopedia.com/mataharigame/ps2-ps2-sony-fat-hdd-500gb-ps2-hdd-300game-gratis-garansi-1tahun-playstation-1729732793365203595?extParam=ivf%3Dfalse%26keyword%3Dps2+fat%26search_id%3D202510221955259DE6D14FFF98063ADHHV%26src%3Dsearch&t_id=1761162928376&t_st=1&t_pp=search_result&t_efo=search_pure_goods_card&t_ef=goods_search&t_sm=&t_spt=search_result" class="btn btn-primary">Lihat Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="custom-card h-100">
+                        <img src="22734d7bd213f4a656ea4e147e285360.jpg" width="100%" alt="Foto tidak ditemukan">
+                        <div class="card-body">
+                            <h5><p class="text-center">PS4 Pro</p></h5>
+                            <p class="card-text">Versi konsol PlayStation 4 yang lebih bertenaga dengan spesifikasi yang ditingkatkan, terutama pada kartu grafis (GPU) yang lebih kuat hingga 4.2 TFLOPS dan dukungan untuk resolusi 4K serta HDR (High Dynamic Range).</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="https://www.tokopedia.com/sweetdreamelectronics/sony-ps4-pro-slim-fat-bisa-online-offline-500gb-1tbplaystation-1729863414697593525?extParam=ivf%3Dfalse%26keyword%3Dps4+pro%26search_id%3D2025102219555234ED066DF378EF3B04PR%26src%3Dsearch&t_id=1761162928376&t_st=2&t_pp=search_result&t_efo=search_pure_goods_card&t_ef=goods_search&t_sm=&t_spt=search_result" class="btn btn-primary">Lihat Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="custom-card h-100">
+                        <img src="PS5-Pro-2-450x253.jpeg" width="100%" alt="Foto tidak ditemukan">
+                        <div class="card-body">
+                            <h5><p class="text-center">PS5 Slim Disc</p></h5>
+                            <p class="card-text">Konsol PlayStation 5 model baru yang lebih ramping dan ringan dari versi asli, tetapi masih memiliki drive cakram Blu-ray 4K yang dapat dilepas untuk memainkan game fisik dan media lain.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="https://www.tokopedia.com/liberty-game-store/ps5-console-slim-model-ps5-slim-console-disc-digital-version-ps5-slim-digtal-cf5c1?extParam=ivf%3Dtrue%26keyword%3Dps5+slim+disc%26search_id%3D2025102219561911B9842E0A271F35CMOU%26src%3Dsearch&t_id=1761162928376&t_st=3&t_pp=search_result&t_efo=search_pure_goods_card&t_ef=goods_search&t_sm=&t_spt=search_result" class="btn btn-primary">Lihat Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer dengan CSS Native -->
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5><p class="text-center">Pendapat saya dari hal untuk PlayStation</p></h5>
+                    <p class="text-align">PlayStation adalah sebuah ekosistem dengan mahir membangunkan rasa "kagum" yang jarang kita rasakan lagi sebagai orang dewasa. Mereka memahami bahwa game yang hebat bukan hanya tentang teknis, tapi tentang jiwa dan cerita yang melekat padanya.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript Native -->
+    <script>
+        // Dark Mode Toggle
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.custom-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = function() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Trigger once on load
+        fadeInOnScroll();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
