@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameStore</title>
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .game-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-card img {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .game-price {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .platform-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .category-btn {
+            margin: 5px;
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer a {
+            color: var(--light-color);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-icons a {
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .newsletter {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        .btn-outline-primary {
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Kategori Section -->
+    <section id="kategori" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Kategori Game</h2>
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="card category-card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Casual</h5>
+                            <p class="card-text">Game kasual mencakup berbagai genre seperti teka-teki (puzzle), cocokkan-3 (match-3), objek tersembunyi (hidden object), petualangan, kata dan trivia, kartu dan papan, serta arcade dan aksi.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card category-card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">RPG</h5>
+                            <p class="card-text">Game RPG sangat beragam, antara lain Action RPG (pertarungan real-time), Turn-Based RPG (permainan bergilir), MMORPG (online massal), JRPG (gaya Jepang dengan cerita khas), dan Tactical RPG (fokus strategi berbasis giliran di peta taktis).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card category-card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Racing</h5>
+                            <p class="card-text">Game racing mencakup berbagai jenis berdasarkan jenis balapan, seperti Formula 1, rally, drag, dan drift, serta dibedakan berdasarkan tingkat realisme, seperti arcade (lebih fokus pada kesenangan) dan simulasi (sim) (lebih realistis).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card category-card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Horror</h5>
+                            <p class="card-text">Game horor sangat luas dan dapat dibagi berdasarkan elemen permainan seperti survival, psikologis, dan yang menargetkan aksi atau investigasi.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card category-card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Zombies</h5>
+                            <p class="card-text">Game zombie sangat beragam, mulai dari Survival horor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card category-card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">FPS</h5>
+                            <p class="card-text">Game first-person shooter (FPS) umumnya dibagi menjadi subgenre seperti Battle Royale, Taktis, dan Sci-Fi.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card category-card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Open World</h5>
+                            <p class="card-text">Game open world terbagi berdasarkan tema (fantasi, sci-fi, realistis), genre (RPG, survival, balap, shooter), dan fokus gameplay (story-driven atau sandbox bebas tanpa cerita utama).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card category-card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Puzzle</h5>
+                            <p class="card-text">Game puzzle sangat beragam, mulai dari logika (Sudoku, logic puzzle), mekanik (memanipulasi objek fisik seperti pada Tetris atau Sokoban), hingga pemecahan masalah yang lebih kompleks seperti escape room atau teka-teki narasi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produk Section -->
+    <section id="produk" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">List Game PS5</h2>
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="EGS_Cyberpunk2077.jpeg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Cyberpunk 2077</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 699.999</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="Gran Turismo 7.jpg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Gran Turismo 7</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 1.162.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="FIFA 25.jpeg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">FIFA 25</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 239.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="Watch Dogs 2.jpg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Watch Dogs 2</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 619.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="Lego.jpeg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Lego Horizon Adventures</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 579.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="The Last of Us Part II.jpg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">The Last of Us Part II</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 830.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="Horizon.jpg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Horizon Forbidden West</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 879.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="FH.jpg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Forza Horizon 5</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 699.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="Until Dawn.jpg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Until Dawn</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 879.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="SILENT HILL F.jpg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Silent Hill F</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 1.004.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="BF 2042.jpg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Battlefield 2042</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 659.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="Astro Bot.jpeg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Astro Bot</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 1.150.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="RE4 Remake.jpeg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Resident Evil 4 Remake</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 519.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="Ghost of Tsushima.jpeg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Ghost of Tsushima</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 1.162.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="Spider Man 2.jpeg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Spider Man 2</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 879.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card game-card shadow-sm">
+                        <div class="position-relative">
+                            <img src="GOW2.jpg" class="card-img-top" alt="Foto tidak ditemukan">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">God of War Ragnarok</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="game-price">Rp 879.000</span>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+   
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
